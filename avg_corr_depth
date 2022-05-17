@@ -1,0 +1,41 @@
+clc;clear;clf;
+names = {'Case1', 'Case2','Case 3','Case 11', ''};
+%x=1:1:8;
+%corr=[0.5003,0.2721,0.1900,0.06,0.5695,0.3277,0.2219,0.0569];
+x=[1,2,3,4];
+corr3=[0.52,0.56,0.6,0.58];
+plot(x,corr3,'o','Markersize',7.5,'MarkerEdgeColor','red','MarkerFaceColor','red');
+hold on;
+corr8=[0.34,0.39,0.4,0.4];
+plot(x,corr8,'d','Markersize',7.5,'MarkerEdgeColor','green','MarkerFaceColor','green');
+hold on;
+corr20=[0.25,0.27,0.27,0.28];
+plot(x,corr20,'p','Markersize',7.5,'MarkerEdgeColor','blue','MarkerFaceColor','blue')
+hold on;
+corr204=[0.14,0.15,0.13,0.12];
+plot(x,corr204,'s','Markersize',7.5,'MarkerEdgeColor','k','MarkerFaceColor','k')
+hold off;
+axis([0 5 0 1])
+set(gca,'xtick',[1:6],'xticklabel',names)
+ax = gca
+xlabel('Cases', 'FontSize', 12, 'FontWeight', 'bold');
+% Make the x axis (line) and tick marks have a line width of 2 and color red.
+ax.XAxis.LineWidth = 1.3;
+%ax.XAxis.Color = 'r';
+% Make the x axis only have a font size of 14 and text weight of bold, and color blue.
+ylabel('Correlation', 'FontSize', 12, 'FontWeight', 'bold');
+% Make the x axis (line) and tick marks have a line width of 5, and color dark green.
+ax.YAxis.LineWidth = 1.3;
+%ax.YAxis.Color = 'b';
+legend('l=1-3','l=1-8','l=1-20','l=4-20')
+yticks(0:0.1:1)
+%xticks(1:0.5:3)
+grid on;
+ax = gca;
+ax.GridColor = [0.1, 0.1, 0.1]
+%ax.GridColor = [0 .5 .5];
+ax.GridLineStyle = '--';
+ax.GridAlpha = 0.7;
+ax.YAxis.MinorTick = 'on';
+ax.YAxis.MinorTickValues = 0:0.02:1
+title('Weighted Correlation with SMEAN2 along Radius')

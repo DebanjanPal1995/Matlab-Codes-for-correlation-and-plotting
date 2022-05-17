@@ -1,0 +1,36 @@
+clc;clear;clf;
+%load corr;
+load corr_3_1_s40rts
+load corr_8_1_s40rts
+load corr_20_1_s40rts
+load corr_20_4_s40rts
+load tdepth;
+cor = corr_3_1_s40rts(:,1);
+cor1 = corr_8_1_s40rts(:,1);
+cor2 = corr_20_1_s40rts(:,1);
+cor3 = corr_20_4_s40rts(:,1);
+depth= tdepth(:,1);
+plot(cor,depth,'k','LineWidth',1.5)
+hold on
+plot(cor1,depth,'r','LineWidth',1.5)
+hold on
+plot(cor2,depth,'g','LineWidth',1.5)
+hold on
+plot(cor3,depth,'b','LineWidth',1.5)
+legend('l=1-3','l=1-8','l=1-20','l=4-20','Location','northeast')
+ax = gca;
+title('Case 1 vs S40RTS ')
+ax = gca;
+xlabel('Correlation', 'FontSize', 12, 'FontWeight', 'bold');
+% Make the x axis (line) and tick marks have a line width of 2 and color red.
+ax.XAxis.LineWidth = 1.3;
+%ax.XAxis.Color = 'r';
+% Make the x axis only have a font size of 14 and text weight of bold, and color blue.
+ylabel('Depth (Km)', 'FontSize', 12, 'FontWeight', 'bold');
+% Make the x axis (line) and tick marks have a line width of 5, and color dark green.
+ax.YAxis.LineWidth = 1.3;
+%ax.YAxis.Color = 'b';
+axis([0 1 0 3000])
+set(ax, 'Ydir', 'reverse')
+
+

@@ -1,0 +1,29 @@
+clc;clear;
+%%%% code to calculate weighted corr
+%load corr
+load corr3_1_1
+load corr8_1_1
+load corr20_1_1
+load corr20_4_1
+load tdepth;
+cor = corr20_4_1(:,1);
+depth= tdepth(:,1)*1000;
+R=6370*1000;
+dino(1)=0;
+numer(1)=0;
+for i=1:1:63
+    w(i)=(R-depth(i))^2;
+	pass1=w(i);
+	dino(i+1)=dino(i)+pass1;
+    dino(i)=dino(i+1);
+    a = dino(i+1);
+
+	cal_numer(i)=w(i)*cor(i);
+	pass2=cal_numer(i);
+	numer(i+1)= numer(i)+pass2;
+    numer(i)=numer(i+1);
+    b= numer(i+1);
+end
+
+weight_corr = numer(64)/dino(64)
+c=b/a
